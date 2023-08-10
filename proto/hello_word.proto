@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package hello_grpc;
+option go_package = "./;hello_grpc";
+
+message HelloWordRequest {
+  string sign                     = 1;
+  string sign_type                = 2;
+}
+
+message HelloWordReply {
+  int32  retcode = 1; // 返回错误码 0：成功，其他失败
+  string retmsg  = 2; // 返回错误码说明
+}
+
+service HelloWordServer {
+  rpc GetHelloWord (HelloWordRequest) returns (HelloWordReply);
+}
